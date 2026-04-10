@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lendave Prashant Keshav — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a0f2e;
+    --navy-mid: #131a45;
+    --accent: #00c8a0;
+    --accent2: #f4c842;
+    --soft: #e8f4f1;
+    --white: #ffffff;
+    --gray: #8a94b2;
+    --card-bg: #111936;
+    --border: rgba(0,200,160,0.18);
+    --font-head: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,15,46,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* Sections */
+  section { padding: 100px 5%; }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+  .circle1 { width: 600px; height: 600px; background: rgba(0,200,160,0.08); top: -100px; right: -100px; }
+  .circle2 { width: 400px; height: 400px; background: rgba(244,200,66,0.06); bottom: 0; left: -80px; }
+
+  .hero-inner { max-width: 700px; position: relative; z-index: 1; }
+  .hero-greeting {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,200,160,0.1);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+  .hero-name {
+    font-family: var(--font-head);
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .hero-name span { color: var(--accent); font-style: italic; }
+  .hero-role {
+    font-size: 1.15rem;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-desc {
+    color: #b0bbd4;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy);
+  }
+  .btn-primary:hover { background: #00e0b3; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-stats {
+    margin-top: 3.5rem;
+    display: flex; gap: 3rem; flex-wrap: wrap;
+  }
+  .stat-item .stat-num {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    color: var(--accent2);
+  }
+  .stat-item .stat-label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* About */
+  #about { background: var(--navy-mid); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .about-text p { color: #b0bbd4; margin-bottom: 1rem; }
+  .info-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .info-list li { display: flex; gap: 1rem; font-size: 0.92rem; }
+  .info-list li span:first-child { color: var(--gray); min-width: 100px; font-weight: 500; }
+  .info-list li span:last-child { color: var(--white); }
+
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .skill-tag {
+    background: rgba(0,200,160,0.1);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* Education */
+  #education { background: var(--navy); }
+  .edu-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .edu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.6rem 2rem;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: start; gap: 1rem;
+    transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: var(--accent); }
+  .edu-degree { font-family: var(--font-head); font-size: 1.1rem; color: var(--white); margin-bottom: 0.2rem; }
+  .edu-school { color: var(--gray); font-size: 0.9rem; }
+  .edu-score { color: var(--accent2); font-weight: 600; font-size: 0.88rem; margin-top: 0.4rem; }
+  .edu-year { color: var(--accent); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; white-space: nowrap; }
+
+  /* Experience */
+  #experience { background: var(--navy-mid); }
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+    transition: border-color 0.2s;
+  }
+  .exp-card:hover { border-color: var(--accent); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .exp-role { font-family: var(--font-head); font-size: 1.3rem; color: var(--white); }
+  .exp-company { color: var(--accent); font-weight: 500; font-size: 0.92rem; margin-top: 0.2rem; }
+  .exp-date { color: var(--gray); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; }
+  .exp-desc { color: #b0bbd4; font-size: 0.95rem; }
+
+  /* Projects */
+  #projects { background: var(--navy); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .proj-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: all 0.2s;
+  }
+  .proj-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .proj-icon {
+    width: 44px; height: 44px;
+    background: rgba(0,200,160,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .proj-name { font-family: var(--font-head); font-size: 1.1rem; color: var(--white); }
+  .proj-desc { color: #8a94b2; font-size: 0.88rem; flex: 1; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .proj-tag {
+    background: rgba(244,200,66,0.1);
+    border: 1px solid rgba(244,200,66,0.2);
+    color: var(--accent2);
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .proj-team { color: var(--gray); font-size: 0.78rem; }
+
+  /* Certifications */
+  #certifications { background: var(--navy-mid); }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .cert-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--accent); }
+  .cert-name { font-size: 0.92rem; color: var(--white); font-weight: 500; margin-bottom: 0.3rem; }
+  .cert-skills { color: var(--gray); font-size: 0.78rem; }
+
+  /* Contact */
+  #contact { background: var(--navy); text-align: center; }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-inner .section-title { margin-bottom: 0.6rem; }
+  .contact-inner p { color: var(--gray); margin-bottom: 2.5rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 10px 20px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link svg { width: 16px; height: 16px; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 5%;
+    border-top: 1px solid var(--border);
+    color: var(--gray);
+    font-size: 0.82rem;
+  }
+
+  /* Divider */
+  .divider { width: 60px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 1rem; }
+
+  /* Animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 2rem; }
+    .nav-links { display: none; }
+    section { padding: 80px 6%; }
+    .edu-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#hero" class="nav-logo">PLK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-bg-circle circle1"></div>
+  <div class="hero-bg-circle circle2"></div>
+  <div class="hero-inner">
+    <div class="hero-greeting">
+      <span>👋</span> Hello, World
+    </div>
+    <h1 class="hero-name">Lendave<br><span>Prashant</span> Keshav</h1>
+    <p class="hero-role">B.Tech Computer Engineering · MITAOE Pune</p>
+    <p class="hero-desc">
+      A dedicated CS undergraduate passionate about automation testing, deep learning, and cybersecurity. NCC cadet with strong values of leadership, teamwork, and resilience.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">7.27</div>
+        <div class="stat-label">CGPA / 10</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="divider"></div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>
+        I'm a final-year Computer Engineering student at MIT Academy of Engineering, Pune. I've applied my technical skills through hands-on academic projects spanning web development, machine learning, and cybersecurity.
+      </p>
+      <p>
+        Passionate about national service, I joined the National Cadet Corps (NCC) driven by a personal interest in the Indian Defence Forces. This experience has built my leadership, discipline, and team spirit — values I bring into every engineering challenge.
+      </p>
+      <ul class="info-list">
+        <li><span>Location</span><span>Pune, Maharashtra, India</span></li>
+        <li><span>Phone</span><span>+91-9763394137</span></li>
+        <li><span>Email</span><span>prashant.lendave@mitaoe.ac.in</span></li>
+        <li><span>Languages</span><span>Marathi, Hindi, English</span></li>
+        <li><span>DOB</span><span>03 March 2004</span></li>
+        <li><span>Interests</span><span>Defence, Exploration, Technology</span></li>
+      </ul>
+    </div>
+    <div>
+      <p style="color:#8a94b2;font-size:0.88rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Key Expertise</p>
+      <div class="skills-wrap">
+        <span class="skill-tag">Leadership</span>
+        <span class="skill-tag">Teamwork</span>
+        <span class="skill-tag">Deep Learning</span>
+        <span class="skill-tag">Automation Testing</span>
+        <span class="skill-tag">Manual Testing</span>
+        <span class="skill-tag">Cyber Security</span>
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">Web Design</span>
+        <span class="skill-tag">Data Analytics</span>
+        <span class="skill-tag">HTML / CSS / JS</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">NLP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="divider"></div>
+  <div class="edu-list fade-up">
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">B.Tech — Computer Engineering</div>
+        <div class="edu-school">MIT Academy of Engineering, Pune</div>
+        <div class="edu-score">CGPA: 7.27 / 10</div>
+      </div>
+      <div class="edu-year">2022 – 2026</div>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">12th — Science (HSC)</div>
+        <div class="edu-school">Ligade Patil College of Science, Karad · Kolhapur Board</div>
+        <div class="edu-score">84.83%</div>
+      </div>
+      <div class="edu-year">2022</div>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">10th — SSC</div>
+        <div class="edu-school">Sangola Vidyamandir Prashala, Solapur · Pune Board</div>
+        <div class="edu-score">91.40%</div>
+      </div>
+      <div class="edu-year">2020</div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <div class="section-label">Work Experience</div>
+  <h2 class="section-title">Internship</h2>
+  <div class="divider"></div>
+  <div class="exp-card fade-up">
+    <div class="exp-header">
+      <div>
+        <div class="exp-role">Automation Test Engineer</div>
+        <div class="exp-company">Arconnet Techsolution · IT / Computers – Software</div>
+      </div>
+      <div class="exp-date">Jun 2025 – Dec 2025</div>
+    </div>
+    <div class="skills-wrap" style="margin-bottom:1rem;">
+      <span class="skill-tag">Automation Testing</span>
+      <span class="skill-tag">Manual Testing</span>
+      <span class="skill-tag">Cyber Security</span>
+      <span class="skill-tag">Communications</span>
+    </div>
+    <p class="exp-desc">
+      Gained confidence across the full automation testing lifecycle — from framework building and test case design to bug solving and reporting. Worked on real-world testing environments, gaining practical exposure to QA workflows, SLIP methodology, and cross-functional team communication.
+    </p>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-label">What I've Built</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="divider"></div>
+  <div class="projects-grid fade-up">
+
+    <div class="proj-card">
+      <div class="proj-icon">🤖</div>
+      <div>
+        <div class="proj-name">Saras Drona</div>
+        <div class="proj-team">Team of 6 · Mentor: Krunal Pawar · Apr 2025</div>
+      </div>
+      <p class="proj-desc">A web-based project developed collaboratively, leveraging frontend technologies and API integration.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">HTML</span>
+        <span class="proj-tag">CSS</span>
+        <span class="proj-tag">JavaScript</span>
+        <span class="proj-tag">Postman</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🔬</div>
+      <div>
+        <div class="proj-name">Shouldering Defect Detection</div>
+        <div class="proj-team">Team of 2 · Mar – Apr 2025</div>
+      </div>
+      <p class="proj-desc">Detects defects in shouldering dots using YOLO-based deep learning models and machine learning algorithms.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Deep Learning</span>
+        <span class="proj-tag">YOLO</span>
+        <span class="proj-tag">Python</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🌾</div>
+      <div>
+        <div class="proj-name">Smart Farming Web Assistance</div>
+        <div class="proj-team">Team of 4</div>
+      </div>
+      <p class="proj-desc">A web platform assisting farmers with smart agricultural insights, data management, and guidance.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Web Design</span>
+        <span class="proj-tag">MySQL</span>
+        <span class="proj-tag">MongoDB</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🛡️</div>
+      <div>
+        <div class="proj-name">AI-Based Cyber Threat Intelligence</div>
+        <div class="proj-team">Team of 4</div>
+      </div>
+      <p class="proj-desc">An AI-driven system to detect and analyze emerging cyber threats using ML and NLP. Automates threat report analysis and enhances early threat detection for proactive defense.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Machine Learning</span>
+        <span class="proj-tag">NLP</span>
+        <span class="proj-tag">Deep Learning</span>
+        <span class="proj-tag">Cybersecurity</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+  <div class="section-label">Learning & Growth</div>
+  <h2 class="section-title">Certifications</h2>
+  <div class="divider"></div>
+  <div class="cert-grid fade-up">
+    <div class="cert-card">
+      <div class="cert-name">Introduction to Machine Learning (NPTEL)</div>
+      <div class="cert-skills">ML Concepts · Mathematics · Feature Engineering</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Certificate of Industrial Training</div>
+      <div class="cert-skills">Data Processing · Visualization · Graph Theory</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Programming Foundations: Beyond the Fundamentals</div>
+      <div class="cert-skills">Programming Concepts</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Learning Microsoft 365 Copilot</div>
+      <div class="cert-skills">Microsoft Office · Artificial Intelligence</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Android Developer Virtual Internship</div>
+      <div class="cert-skills">Android Development</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">End-to-End Analytics — Microsoft Fabric</div>
+      <div class="cert-skills">Data Analysis · Analytics</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Language Models in Azure Databricks</div>
+      <div class="cert-skills">Language Models · Azure</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Discover Data Analysis</div>
+      <div class="cert-skills">Data Analysis · Data Analytics</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Get Started with Power BI</div>
+      <div class="cert-skills">Power BI · Business Intelligence</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Automation in Manufacturing (NPTEL)</div>
+      <div class="cert-skills">Industrial Automation</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-name">Data Analytics Job Simulation</div>
+      <div class="cert-skills">Data Analytics</div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-inner fade-up">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <p>I'm open to opportunities, collaborations, and conversations. Feel free to reach out!</p>
+    <div class="contact-links">
+      <a href="mailto:prashant.lendave@mitaoe.ac.in" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        prashant.lendave@mitaoe.ac.in
+      </a>
+      <a href="mailto:lendaveprashant0303@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        lendaveprashant0303@gmail.com
+      </a>
+      <a href="tel:+919763394137" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.26 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91-9763394137
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <a href="mailto:prashant.lendave@mitaoe.ac.in" class="btn btn-primary" style="font-size:1rem;padding:14px 36px;">Say Hello 👋</a>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & Built by <strong style="color:var(--accent)">Lendave Prashant Keshav</strong> · Pune, India · 2025</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
